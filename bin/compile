@@ -14,7 +14,8 @@ ENV_DIR=$3
 source $BP_DIR/lib/common.sh
 source <(curl -s --retry 3 -L $BUILDPACK_STDLIB_URL)
 
-export_env $ENV_DIR "." "JAVA_OPTS|JAVA_TOOL_OPTIONS"
+# export_env $ENV_DIR "." "JAVA_OPTS|JAVA_TOOL_OPTIONS"
+export_env $ENV_DIR "." "JAVA_OPTS"
 
 install_jdk ${BUILD_DIR}
 
@@ -49,7 +50,7 @@ export ELASTICSEARCH_URL=localhost:9200
 source $BUILD_DIR/.profile.d/jvmcommon.sh
 
 if [ ! -f /tmp/es.pid ]; then
-  echo "Starting ElasticSearch..."
+  echo "# Starting ElasticSearch..."
   elasticsearch -d -p /tmp/es.pid
 fi
 EOF
