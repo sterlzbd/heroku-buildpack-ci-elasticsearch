@@ -23,7 +23,7 @@ indent() {
   sed -u 's/^/       /'
 }
 
-VERSION="2.4.0"
+VERSION="5.4.3"
 INSTALL_DIR="$BUILD_DIR/.heroku/vendor/elasticsearch"
 PROFILE_PATH="$BUILD_DIR/.profile.d/elasticsearch.sh"
 
@@ -34,7 +34,7 @@ mkdir -p $CACHE_DIR
 if [ ! -d $CACHE_DIR/elasticsearch-$VERSION ]; then
 	echo "Fetching and installing elasticsearch" | indent
 	cd $CACHE_DIR
-	curl -sOL "https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/$VERSION/elasticsearch-$VERSION.tar.gz"
+	curl -sOL "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-$VERSION.tar.gz"
 	tar zxf "elasticsearch-$VERSION.tar.gz"
 	cd "elasticsearch-$VERSION"
 	cp -r $CACHE_DIR/elasticsearch-$VERSION/* $INSTALL_DIR/
